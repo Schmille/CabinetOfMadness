@@ -1,0 +1,13 @@
+modLoader="javafml" #mandatory
+loaderVersion="[39,)" #mandatory
+license="BSD 3-Clause License" #mandatory
+issueTrackerURL="https://github.com/Schmille/CabinetOfMadness/issues" #optional
+logoFile="" #Todo
+credits="" #optional
+[[mods]] #mandatory
+modId="cabinetofmadness" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Cabinet of Madness" #mandatory
+displayURL="https://github.com/Schmille/CabinetOfMadness" #optional
+authors="Schmille aka CallMeSchmille" #optional
+description='''Welcome to the cabinet of madness! Enjoy your stay!'''

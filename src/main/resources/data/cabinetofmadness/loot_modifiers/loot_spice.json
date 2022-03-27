@@ -1,0 +1,21 @@
+{
+  "type": "cabinetofmadness:loot_spice",
+  "conditions": [
+    {
+      "condition": "alternative",
+      "terms": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "minecraft:sand",
+          "properties": {}
+        },
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "minecraft:red_sand",
+          "properties": {}
+        }
+      ]
+    }
+  ],
+  "drawChance": 0.01
+}

@@ -1,10 +1,13 @@
 package schmille.cabinetofmadness.items;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import schmille.cabinetofmadness.properties.Config;
+import schmille.cabinetofmadness.util.MobEffectHelper;
 
 public class SpiceItem extends Item {
 
@@ -27,14 +30,18 @@ public class SpiceItem extends Item {
     protected static FoodProperties createFoodProperties() {
         var builder = new FoodProperties.Builder()
                 .fast()
-                .nutrition(2)
-                .saturationMod(1.0F)
-                .effect(SpiceItem::createEffectInstance, 1.0F);
+                .nutrition(Config.SPICE.nutrition())
+                .saturationMod(Config.SPICE.saturation())
+                .effect(SpiceItem::createEffectInstance, Config.SPICE.probability());
         return builder.build();
     }
 
     private static MobEffectInstance createEffectInstance() {
+        var effect = MobEffects.REGENERATION;
+        if(Minecraft.getInstance().player != null)
+            effect = MobEffectHelper.getRandom(Minecraft.getInstance().player.getRandom());
+
         // Duration, Strength, Ambient, Visible, Icon
-        return new MobEffectInstance(MobEffects.REGENERATION, 250, 0, false,false, true);
+        return new MobEffectInstance(effect, Config.SPICE.time(), Config.SPICE.level(), false,false, true);
     }
 }

@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "minecraft:block/iron_block"
+  },
+  "display": {
+    "firstperson_righthand": {
+      "scale": [ 1.09, 1.09, 1.09 ]
+    },
+    "firstperson_lefthand": {
+      "scale": [ 1.09, 1.09, 1.09 ]
+    },
+    "thirdperson_righthand": {
+      "scale": [ 1.09, 1.09, 1.09 ]
+    },
+    "thirdperson_lefthand": {
+      "scale": [ 1.09, 1.09, 1.09 ]
+    },
+    "ground": {
+      "scale": [ 1.09, 1.09, 1.09 ]
+    },
+    "gui": {
+      "scale": [ 1.09, 1.09, 1.09 ]
+    }
+  }
+}

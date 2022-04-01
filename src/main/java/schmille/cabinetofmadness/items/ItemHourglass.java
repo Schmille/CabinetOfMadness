@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import schmille.cabinetofmadness.util.NetherTeleporter;
 
 public class ItemHourglass extends Item {
 
@@ -27,10 +28,8 @@ public class ItemHourglass extends Item {
         ServerLevel targetDimension = level.getServer().getLevel(key);
 
         if (level.getServer().isNetherEnabled() && !player.isPassenger()) {
-            level.getProfiler().push("portal");
             player.setPortalCooldown();
-            player.changeDimension(targetDimension);
-            level.getProfiler().pop();
+            player.changeDimension(targetDimension, new NetherTeleporter());
         }
 
         return InteractionResult.CONSUME;

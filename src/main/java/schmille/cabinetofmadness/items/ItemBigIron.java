@@ -14,7 +14,7 @@ public class ItemBigIron extends Item {
         var props = new Properties();
         props.stacksTo(64);
         props.setNoRepair();
-        props.tab(CreativeModeTab.TAB_MATERIALS);
+        props.tab(ModItems.CREATIVE_MODE_TAB);
         return props;
     }
 }

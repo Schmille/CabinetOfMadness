@@ -21,7 +21,7 @@ public class ItemSpice extends Item {
 
         props = props.stacksTo(16);
         props = props.setNoRepair();
-        props = props.tab(CreativeModeTab.TAB_FOOD);
+        props = props.tab(ModItems.CREATIVE_MODE_TAB);
         props = props.food(createFoodProperties());
 
         return props;

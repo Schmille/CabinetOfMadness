@@ -1,5 +1,6 @@
 {
   "_comment": "items",
   "item.cabinetofmadness.spice": "Spice",
-  "item.cabinetofmadness.big_iron": "Großes Eisen"
+  "item.cabinetofmadness.big_iron": "Großes Eisen",
+  "itemGroup.cabinetofmadness": "Cabinet des Wahnsinns"
 }

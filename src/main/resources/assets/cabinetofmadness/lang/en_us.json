@@ -1,5 +1,6 @@
 {
   "_comment": "items",
   "item.cabinetofmadness.spice": "Spice",
-  "item.cabinetofmadness.big_iron": "Big Iron"
+  "item.cabinetofmadness.big_iron": "Big Iron",
+  "itemGroup.cabinetofmadness": "Cabinet of madness"
 }

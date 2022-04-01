@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OWO",
+    " N ",
+    "OLO"
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "L": {
+      "item": "minecraft:lava_bucket"
+    }
+  },
+  "result": {
+    "item": "cabinetofmadness:interdimensional_hourglass",
+    "count": 1
+  }
+}

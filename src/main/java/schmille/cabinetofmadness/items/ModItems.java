@@ -14,10 +14,12 @@ public abstract class ModItems {
 
     public static final Item SPICE = new ItemSpice();
     public static final Item BIG_IRON = new ItemBigIron();
+    public static final Item HOURGLASS = new ItemHourglass();
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().register(SPICE);
         event.getRegistry().register(BIG_IRON);
+        event.getRegistry().register(HOURGLASS);
     }
 }

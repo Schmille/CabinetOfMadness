@@ -9,9 +9,9 @@ import net.minecraft.world.item.Item;
 import schmille.cabinetofmadness.properties.Config;
 import schmille.cabinetofmadness.util.MobEffectHelper;
 
-public class SpiceItem extends Item {
+public class ItemSpice extends Item {
 
-    public SpiceItem() {
+    public ItemSpice() {
         super(getProperties());
         this.setRegistryName("spice");
     }
@@ -32,7 +32,7 @@ public class SpiceItem extends Item {
                 .fast()
                 .nutrition(Config.SPICE.nutrition())
                 .saturationMod(Config.SPICE.saturation())
-                .effect(SpiceItem::createEffectInstance, Config.SPICE.probability());
+                .effect(ItemSpice::createEffectInstance, Config.SPICE.probability());
         return builder.build();
     }
 

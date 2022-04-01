@@ -5,7 +5,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.LootModifier;
 import org.jetbrains.annotations.NotNull;
-import schmille.cabinetofmadness.items.Items;
+import schmille.cabinetofmadness.items.ModItems;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class SpiceLootModifier extends LootModifier {
 
         if(draw <= chance) {
             generatedLoot.clear();
-            generatedLoot.add(new ItemStack(Items.SPICE_ITEM, 1));
+            generatedLoot.add(new ItemStack(ModItems.SPICE, 1));
         }
 
         return generatedLoot;

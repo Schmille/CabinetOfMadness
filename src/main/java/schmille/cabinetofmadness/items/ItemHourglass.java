@@ -2,10 +2,11 @@ package schmille.cabinetofmadness.items;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import schmille.cabinetofmadness.util.NetherTeleporter;
 
@@ -17,12 +18,12 @@ public class ItemHourglass extends Item {
     }
 
     @Override
-    public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
-        var player = context.getPlayer();
-        var level = context.getLevel();
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 
+        ItemStack stack = hand == InteractionHand.MAIN_HAND ? player.getMainHandItem() : player.getOffhandItem();
         if(level.isClientSide())
-            return InteractionResult.PASS;
+            return InteractionResultHolder.pass(stack);
+
 
         ResourceKey<Level> key = level.dimension() == Level.NETHER ? Level.OVERWORLD : Level.NETHER;
         ServerLevel targetDimension = level.getServer().getLevel(key);
@@ -32,7 +33,7 @@ public class ItemHourglass extends Item {
             player.changeDimension(targetDimension, new NetherTeleporter());
         }
 
-        return InteractionResult.CONSUME;
+        return InteractionResultHolder.consume(stack);
     }
 
     protected static Properties getProperties() {

@@ -10,9 +10,11 @@ import schmille.cabinetofmadness.CabinetOfMadness;
 public abstract class ModItems {
 
     public static final Item SPICE = new ItemSpice();
+    public static final Item BIG_IRON = new ItemBigIron();
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().register(SPICE);
+        event.getRegistry().register(BIG_IRON);
     }
 }

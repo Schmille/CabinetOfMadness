@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
+import schmille.cabinetofmadness.properties.Config;
 
 public class ItemLightningRod extends Item {
 
@@ -26,7 +27,7 @@ public class ItemLightningRod extends Item {
         if(level.isClientSide())
             return InteractionResultHolder.pass(stack);
 
-        HitResult result = player.pick(20.0D, 0.0F, true);
+        HitResult result = player.pick(Config.LIGHTNING_ROD.raytraceDistance(), 0.0F, true);
 
         BlockPos pos = switch(result.getType()) {
             case BLOCK, ENTITY -> new BlockPos(result.getLocation());
@@ -39,10 +40,13 @@ public class ItemLightningRod extends Item {
         lightningEntity.setPos(pos.getX(), pos.getY(), pos.getZ());
         level.addFreshEntity(lightningEntity);
 
-        ServerLevel serverLevel = level.getServer().getLevel(level.dimension());
-        // ClearTime, Rain/Thunder time, Raining, Thundering
-        serverLevel.setWeatherParameters(0, 1, true, true);
-        player.getCooldowns().addCooldown(this, 20);
+        if(Config.LIGHTNING_ROD.changeWeather()) {
+            ServerLevel serverLevel = level.getServer().getLevel(level.dimension());
+            // ClearTime, Rain/Thunder time, Raining, Thundering
+            serverLevel.setWeatherParameters(0, Config.LIGHTNING_ROD.weatherChangeDuration(), true, true);
+        }
+
+        player.getCooldowns().addCooldown(this, Config.LIGHTNING_ROD.cooldown());
 
         return InteractionResultHolder.consume(stack);
     }

@@ -15,11 +15,13 @@ public abstract class ModItems {
     public static final Item SPICE = new ItemSpice();
     public static final Item BIG_IRON = new ItemBigIron();
     public static final Item HOURGLASS = new ItemHourglass();
+    public static final Item LIGHTNING_ROD = new ItemLightningRod();
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().register(SPICE);
         event.getRegistry().register(BIG_IRON);
         event.getRegistry().register(HOURGLASS);
+        event.getRegistry().register(LIGHTNING_ROD);
     }
 }

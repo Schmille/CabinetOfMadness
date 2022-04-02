@@ -13,18 +13,24 @@ public class SpiceLootModifier extends LootModifier {
 
     private final double drawChance;
 
+    private final int draw;
+    private final int pool;
+
     public SpiceLootModifier(LootItemCondition[] conditionsIn, double drawChance) {
         super(conditionsIn);
         this.drawChance = drawChance;
+
+        var pair = LootModifiers.findPercentile(this.drawChance);
+        this.draw = pair.left();
+        this.pool = pair.right();
     }
 
     @NotNull
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        double chance = this.drawChance * 100;
-        int draw = context.getRandom().nextInt(1,100);
+        int drawn = context.getRandom().nextInt(1, this.pool);
 
-        if(draw <= chance) {
+        if(drawn <= this.draw) {
             generatedLoot.clear();
             generatedLoot.add(new ItemStack(ModItems.SPICE, 1));
         }

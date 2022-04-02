@@ -1,15 +1,16 @@
 package schmille.cabinetofmadness.items;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import schmille.cabinetofmadness.properties.Config;
 import schmille.cabinetofmadness.util.MobEffectHelper;
 
+import java.util.Random;
+
 public class ItemSpice extends Item {
+
+    private static final Random RANDOM = new Random();
 
     public ItemSpice() {
         super(getProperties());
@@ -37,10 +38,7 @@ public class ItemSpice extends Item {
     }
 
     private static MobEffectInstance createEffectInstance() {
-        var effect = MobEffects.REGENERATION;
-        if(Minecraft.getInstance().player != null)
-            effect = MobEffectHelper.getRandom(Minecraft.getInstance().player.getRandom());
-
+        var effect = MobEffectHelper.getRandom(RANDOM);
         // Duration, Strength, Ambient, Visible, Icon
         return new MobEffectInstance(effect, Config.SPICE.time(), Config.SPICE.level(), false,false, true);
     }
